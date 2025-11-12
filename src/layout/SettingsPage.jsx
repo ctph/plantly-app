@@ -9,24 +9,25 @@ import {
   Button,
   Typography,
   message,
+  Space,
 } from "antd";
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph } = Typography;
 const { Option } = Select;
 
 export default function SettingsPage() {
-  const [plantForm] = Form.useForm();
-  const [profileForm] = Form.useForm();
-  const [usernameForm] = Form.useForm();
-  const [passwordForm] = Form.useForm();
+  const [form] = Form.useForm();
 
-  const onFakeSuccess = (msg) => {
-    message.success({ content: msg, duration: 1.4 });
+  const onFinish = (vals) => {
+    // simulate saving all sections at once
+    console.log("All settings:", vals);
+    message.success("All settings updated ✅", 1.6);
+    // form.resetFields(); // uncomment if you want to clear after submit
   };
 
   return (
     <div className="app-content app-container">
-      {/* Header Card */}
+      {/* page header */}
       <Card
         className="plantly-card"
         styles={{ body: { padding: 28, textAlign: "center" } }}
@@ -35,28 +36,32 @@ export default function SettingsPage() {
           Settings
         </Title>
         <Paragraph style={{ marginTop: 6, color: "#595959" }}>
-          Manage your profile, plants, and security preferences.
+          Update plants, profile, and security in one go.
         </Paragraph>
       </Card>
 
-      <Row gutter={[16, 16]} style={{ marginTop: 16 }}>
-        {/* Insert Plant Type */}
-        <Col xs={24} lg={12}>
-          <Card className="plantly-card" styles={{ body: { padding: 24 } }}>
-            <Title level={4} style={{ marginTop: 0 }}>
-              Insert Plant Type
-            </Title>
-            <Paragraph type="secondary">
-              Add the primary plant type you’re tracking.
-            </Paragraph>
-            <Form
-              form={plantForm}
-              layout="vertical"
-              onFinish={(vals) => {
-                onFakeSuccess(`Saved plant type: ${vals.plantType}`);
-                plantForm.resetFields();
-              }}
-            >
+      <Form
+        form={form}
+        layout="vertical"
+        onFinish={onFinish}
+        style={{ marginTop: 16 }}
+        initialValues={{
+          plantType: "monstera",
+          fullName: "Your Name",
+          email: "you@example.com",
+          username: "your_username",
+        }}
+      >
+        <Row gutter={[16, 16]}>
+          {/* Insert Plant Type */}
+          <Col xs={24} lg={12}>
+            <Card className="plantly-card" styles={{ body: { padding: 24 } }}>
+              <Title level={4} style={{ marginTop: 0 }}>
+                Insert Plant Type
+              </Title>
+              <Paragraph type="secondary">
+                Primary plant you’re tracking.
+              </Paragraph>
               <Form.Item
                 label="Plant Type"
                 name="plantType"
@@ -72,33 +77,16 @@ export default function SettingsPage() {
                   <Option value="succulent">Succulent</Option>
                 </Select>
               </Form.Item>
-              <Button type="primary" htmlType="submit" block>
-                Save Plant Type
-              </Button>
-            </Form>
-          </Card>
-        </Col>
+            </Card>
+          </Col>
 
-        {/* Profile Settings */}
-        <Col xs={24} lg={12}>
-          <Card className="plantly-card" styles={{ body: { padding: 24 } }}>
-            <Title level={4} style={{ marginTop: 0 }}>
-              Profile Settings
-            </Title>
-            <Paragraph type="secondary">
-              Update your basic profile information.
-            </Paragraph>
-            <Form
-              form={profileForm}
-              layout="vertical"
-              initialValues={{
-                fullName: "Curwen Tan",
-                email: "you@example.com",
-              }}
-              onFinish={(vals) => {
-                onFakeSuccess("Profile updated successfully");
-              }}
-            >
+          {/* Profile Settings */}
+          <Col xs={24} lg={12}>
+            <Card className="plantly-card" styles={{ body: { padding: 24 } }}>
+              <Title level={4} style={{ marginTop: 0 }}>
+                Profile Settings
+              </Title>
+              <Paragraph type="secondary">Basic profile information.</Paragraph>
               <Form.Item
                 label="Full Name"
                 name="fullName"
@@ -116,30 +104,16 @@ export default function SettingsPage() {
               >
                 <Input placeholder="you@example.com" />
               </Form.Item>
-              <Button type="primary" htmlType="submit" block>
-                Save Profile
-              </Button>
-            </Form>
-          </Card>
-        </Col>
+            </Card>
+          </Col>
 
-        {/* Change Username */}
-        <Col xs={24} lg={12}>
-          <Card className="plantly-card" styles={{ body: { padding: 24 } }}>
-            <Title level={4} style={{ marginTop: 0 }}>
-              Change Username
-            </Title>
-            <Paragraph type="secondary">
-              Pick a unique username for your account.
-            </Paragraph>
-            <Form
-              form={usernameForm}
-              layout="vertical"
-              onFinish={(vals) => {
-                onFakeSuccess(`Username changed to @${vals.username}`);
-                usernameForm.resetFields();
-              }}
-            >
+          {/* Change Username */}
+          <Col xs={24} lg={12}>
+            <Card className="plantly-card" styles={{ body: { padding: 24 } }}>
+              <Title level={4} style={{ marginTop: 0 }}>
+                Change Username
+              </Title>
+              <Paragraph type="secondary">Pick a unique username.</Paragraph>
               <Form.Item
                 label="New Username"
                 name="username"
@@ -150,34 +124,18 @@ export default function SettingsPage() {
               >
                 <Input addonBefore="@" placeholder="new-username" />
               </Form.Item>
-              <Button type="primary" htmlType="submit" block>
-                Change Username
-              </Button>
-            </Form>
-          </Card>
-        </Col>
+            </Card>
+          </Col>
 
-        {/* Change Password */}
-        <Col xs={24} lg={12}>
-          <Card className="plantly-card" styles={{ body: { padding: 24 } }}>
-            <Title level={4} style={{ marginTop: 0 }}>
-              Change Password
-            </Title>
-            <Paragraph type="secondary">
-              Use a strong password you don’t use elsewhere.
-            </Paragraph>
-            <Form
-              form={passwordForm}
-              layout="vertical"
-              onFinish={({ currentPassword, newPassword, confirmNew }) => {
-                if (newPassword !== confirmNew) {
-                  message.error("New passwords do not match");
-                  return;
-                }
-                onFakeSuccess("Password changed successfully");
-                passwordForm.resetFields();
-              }}
-            >
+          {/* Change Password */}
+          <Col xs={24} lg={12}>
+            <Card className="plantly-card" styles={{ body: { padding: 24 } }}>
+              <Title level={4} style={{ marginTop: 0 }}>
+                Change Password
+              </Title>
+              <Paragraph type="secondary">
+                Use a strong password you don’t use elsewhere.
+              </Paragraph>
               <Form.Item
                 label="Current Password"
                 name="currentPassword"
@@ -206,17 +164,35 @@ export default function SettingsPage() {
                     required: true,
                     message: "Please confirm your new password",
                   },
+                  ({ getFieldValue }) => ({
+                    validator(_, value) {
+                      if (!value || getFieldValue("newPassword") === value)
+                        return Promise.resolve();
+                      return Promise.reject(
+                        new Error("New passwords do not match")
+                      );
+                    },
+                  }),
                 ]}
               >
                 <Input.Password placeholder="Repeat new password" />
               </Form.Item>
-              <Button type="primary" htmlType="submit" block>
-                Change Password
-              </Button>
-            </Form>
-          </Card>
-        </Col>
-      </Row>
+            </Card>
+          </Col>
+        </Row>
+
+        {/* one update button — centered at bottom */}
+        <div className="settings-footer">
+          <Space>
+            <Button size="large" onClick={() => form.resetFields()}>
+              Reset
+            </Button>
+            <Button type="primary" size="large" htmlType="submit">
+              Update All Settings
+            </Button>
+          </Space>
+        </div>
+      </Form>
     </div>
   );
 }

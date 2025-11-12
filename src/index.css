@@ -85,3 +85,161 @@ body,
     white-space: normal;
   } /* allow wrap on small screens */
 }
+
+.settings-footer {
+  position: sticky; /* stays visible when scrolling long forms */
+  bottom: 0;
+  display: flex;
+  justify-content: center; /* center the button group */
+  padding: 16px 0 8px;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0)
+  );
+  margin-top: 8px;
+}
+/* center feed column */
+.feed-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+/* card sections */
+.feed-card {
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.feed-header,
+.feed-actions,
+.feed-meta,
+.feed-comments {
+  padding: 12px 16px;
+}
+
+.feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* icons */
+.icon-like,
+.icon-comment,
+.icon-share {
+  font-size: 20px;
+  cursor: pointer;
+}
+.icon-like.liked {
+  color: #ff4d4f;
+}
+
+/* comment input sticks to bottom section visually */
+.feed-add-comment .ant-input {
+  border-radius: 8px;
+}
+.feed-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 0;
+}
+/* layout wrappers */
+.feed-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+.feed-grid {
+  align-items: flex-start;
+}
+
+.feed-container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.feed-sidebar > * + * {
+  margin-top: 16px;
+}
+
+/* sticky right panel */
+.sticky {
+  position: sticky;
+  top: 80px;
+}
+
+/* make cards look great together */
+.feed-card {
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.ant-upload-list-picture-card-container {
+  width: 100%;
+}
+
+.ant-upload-select-picture-card {
+  width: 100%;
+  height: 180px;
+}
+
+.ant-upload-list-item-thumbnail img {
+  object-fit: cover;
+}
+/* Frame takes full viewport height minus your app header (64px) */
+.feed-frame {
+  height: calc(100vh - 64px);
+  padding: 24px 0;
+  box-sizing: border-box;
+}
+
+/* Centered grid: scrollable feed + fixed sidebar */
+.feed-split {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 720px) 340px; /* left grows; right fixed */
+  gap: 24px;
+}
+
+/* Title block stays above the split, not inside the scroller */
+.feed-title {
+  width: min(1200px, 100%);
+  margin: 0 auto 16px;
+  text-align: center;
+}
+
+/* Only the left column scrolls */
+.feed-scroll {
+  min-height: 0; /* required for nested scrolling in a fixed-height parent */
+  overflow-y: auto; /* independent scroll */
+  padding-right: 8px; /* small gutter so scrollbar doesn't overlap content */
+}
+
+/* Right column stays put while left scrolls */
+.feed-profile-fixed {
+  align-self: start;
+  position: sticky;
+  top: 24px; /* distance from top inside the viewport */
+}
+
+/* spacing between stacked sidebar cards */
+.feed-profile-fixed > * + * {
+  margin-top: 16px;
+}
+
+/* optional: make feed cards play nice in a scroller */
+.feed-card {
+  margin-bottom: 16px;
+}
+/* remove antd gray background */
+.ant-layout,
+.ant-layout-content {
+  background: #ffffff !important; /* your light green theme */
+}
+
+/* ensure Feed page fills full viewport width */
+.feed-frame,
+.page-scroll {
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+  min-height: 100vh;
+}
