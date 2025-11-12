@@ -30,7 +30,7 @@ export default function RemindersPage() {
   const [desc, setDesc] = useState("");
   const [items, setItems] = useState([]);
 
-  // load / persist
+  // load once
   useEffect(() => {
     const raw = localStorage.getItem(LS_KEY);
     if (raw) {
@@ -39,8 +39,12 @@ export default function RemindersPage() {
       } catch {}
     }
   }, []);
+
+  // persist + notify others whenever reminders change
   useEffect(() => {
     localStorage.setItem(LS_KEY, JSON.stringify(items));
+    // notify HomePage / others in the same tab
+    window.dispatchEvent(new Event("plantly:remindersUpdated"));
   }, [items]);
 
   const addReminder = () => {
@@ -71,6 +75,7 @@ export default function RemindersPage() {
     setItems((prev) =>
       prev.map((r) => (r.id === id ? { ...r, done: !r.done } : r))
     );
+
   const removeOne = (id) => setItems((prev) => prev.filter((r) => r.id !== id));
 
   const sorted = useMemo(
