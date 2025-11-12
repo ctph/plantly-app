@@ -5,6 +5,7 @@ import NotificationsPage from "./layout/NotificationsPage";
 import SettingsPage from "./layout/SettingsPage";
 import MenuBar from "./components/MenuBar";
 import FeedPage from "./layout/FeedPage";
+import RemindersPage from "./layout/RemindersPage";
 import { Layout } from "antd";
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
         {selected === "notifications" && <NotificationsPage />}
         {selected === "settings" && <SettingsPage />}
         {selected === "feed" && <FeedPage />}
+        {selected === "reminders" && <RemindersPage />}
         {/* you can later add feed/settings pages too */}
       </Layout>
     </Layout>

@@ -5,6 +5,7 @@ import {
   ReadOutlined,
   SettingOutlined,
   BellOutlined,
+  CalendarOutlined,
 } from "@ant-design/icons";
 
 const { Sider } = Layout;
@@ -28,6 +29,7 @@ export default function MenuBar({
       ),
       label: "Notifications",
     },
+    { key: "reminders", icon: <CalendarOutlined />, label: "Reminders" },
   ];
 
   return (

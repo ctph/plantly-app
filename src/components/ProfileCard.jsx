@@ -9,7 +9,7 @@ export default function ProfileCard() {
       <Space align="center" size={16} style={{ width: "100%" }}>
         <Avatar
           size={64}
-          src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=256&q=80&auto=format&fit=crop"
+          src="https://thumbs.dreamstime.com/b/portrait-handsome-smiling-young-man-folded-arms-smiling-joyful-cheerful-men-crossed-hands-isolated-studio-shot-172869765.jpg"
         />
         <div>
           <Text strong>@plant.ly</Text>

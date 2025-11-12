@@ -65,10 +65,10 @@ export default function FeedCard({
         </Space>
         <MoreOutlined style={{ fontSize: 18, color: "#999" }} />
       </div>
-
       {/* media */}
-      <Image src={image} alt="post" preview={false} className="feed-image" />
-
+      <div className="feed-media">
+        <img src={image} alt={caption || "post"} />
+      </div>
       {/* actions */}
       <div className="feed-actions">
         <Space size="large">
@@ -87,7 +87,6 @@ export default function FeedCard({
           </Tooltip>
         </Space>
       </div>
-
       {/* meta */}
       <div className="feed-meta">
         <Text strong>{likes} likes</Text>
@@ -98,9 +97,7 @@ export default function FeedCard({
           </div>
         )}
       </div>
-
       <Divider style={{ margin: "8px 0 0" }} />
-
       {/* comments */}
       <div className="feed-comments">
         {comments.length > 0 && (

@@ -68,6 +68,7 @@ export default function FeedPage() {
               avatar={p.avatar}
               time={p.time}
               image={p.image}
+              srcSet={p.srcSet}
               caption={p.caption}
               initialLikes={p.likes}
               initialComments={p.comments}
