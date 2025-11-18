@@ -256,19 +256,7 @@ body,
   object-fit: cover; /* <- fills the space, crops nicely */
   display: block;
 }
-.home-image-banner {
-  display: flex;
-  justify-content: center;
-  margin: 24px 0 32px 0;
-}
 
-.home-image-banner img {
-  width: 100%;
-  max-width: 900px;
-  border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(0, 128, 0, 0.15); /* subtle green glow */
-  object-fit: cover;
-}
 .plantly-card {
   border-radius: 14px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
@@ -340,4 +328,46 @@ body,
 /* Action buttons spacing */
 .ant-list-item-action > li {
   margin-left: 10px;
+}
+/* Make AntD Layout transparent so background image is visible */
+.ant-layout {
+  background: transparent !important;
+}
+
+.ant-layout-content {
+  background: transparent !important;
+}
+
+.ant-layout-header {
+  background: transparent !important;
+}
+
+/* Center the banner image a bit nicer (optional) */
+.home-image-banner {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* 🌿 Animating plant image */
+.plant-pet {
+  width: 100%;
+  height: auto;
+  max-width: 25%;
+  border-radius: 24px; /* keep the soft rounded look */
+  animation: plantFloat 3.5s ease-in-out infinite;
+  transform-origin: center bottom; /* pivot from the pot */
+}
+
+/* keyframes for gentle floating / breathing effect */
+@keyframes plantFloat {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }

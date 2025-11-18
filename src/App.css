@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+.ant-layout,
+.ant-layout-content,
+.ant-layout-header {
+  background: transparent !important;
+}
