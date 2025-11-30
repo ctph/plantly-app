@@ -117,9 +117,8 @@ export default function ThemeStorePage() {
   }, [category, sort, query]);
 
   const handleApply = (theme) => {
-    // For now just log + toast in console
-    // You can later hook this to antd theme / CSS variables
-    console.log("Apply theme:", theme.id);
+    localStorage.setItem("plantly.selectedTheme", theme.thumb);
+    window.dispatchEvent(new Event("plantly:themeUpdated"));
   };
 
   return (
