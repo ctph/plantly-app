@@ -1,4 +1,5 @@
 import React from "react";
+import { BgColorsOutlined } from "@ant-design/icons";
 import { Layout, Menu, Badge } from "antd";
 import {
   HomeOutlined,
@@ -19,6 +20,10 @@ export default function MenuBar({
   const items = [
     { key: "home", icon: <HomeOutlined />, label: "Home" },
     { key: "feed", icon: <ReadOutlined />, label: "Feed" },
+
+    // 🌈 NEW — Theme Store
+    { key: "themes", icon: <BgColorsOutlined />, label: "Themes" },
+
     { key: "settings", icon: <SettingOutlined />, label: "Settings" },
     {
       key: "notifications",

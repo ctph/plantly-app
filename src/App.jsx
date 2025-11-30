@@ -6,6 +6,7 @@ import SettingsPage from "./layout/SettingsPage";
 import MenuBar from "./components/MenuBar";
 import FeedPage from "./layout/FeedPage";
 import RemindersPage from "./layout/RemindersPage";
+import ThemeStorePage from "./layout/ThemeStorePage";
 import { Layout } from "antd";
 
 export default function App() {
@@ -25,12 +26,16 @@ export default function App() {
 
       {/* Page content */}
       <Layout style={{ marginInlineStart: siderWidth }}>
-        {selected === "home" && <HomePage />}
+        {selected === "home" && (
+          <HomePage
+            goToReminders={() => setSelected("reminders")} // 🔥 pass callback
+          />
+        )}
         {selected === "notifications" && <NotificationsPage />}
         {selected === "settings" && <SettingsPage />}
         {selected === "feed" && <FeedPage />}
         {selected === "reminders" && <RemindersPage />}
-        {/* you can later add feed/settings pages too */}
+        {selected === "themes" && <ThemeStorePage />}
       </Layout>
     </Layout>
   );
