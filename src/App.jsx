@@ -8,6 +8,7 @@ import FeedPage from "./layout/FeedPage";
 import RemindersPage from "./layout/RemindersPage";
 import ThemeStorePage from "./layout/ThemeStorePage";
 import { Layout } from "antd";
+import ChatPage from "./layout/ChatPage";
 
 export default function App() {
   const [selected, setSelected] = useState("home");
@@ -34,6 +35,7 @@ export default function App() {
         {selected === "notifications" && <NotificationsPage />}
         {selected === "settings" && <SettingsPage />}
         {selected === "feed" && <FeedPage />}
+        {selected === "chat" && <ChatPage />}
         {selected === "reminders" && <RemindersPage />}
         {selected === "themes" && <ThemeStorePage />}
       </Layout>

@@ -7,6 +7,7 @@ import {
   SettingOutlined,
   BellOutlined,
   CalendarOutlined,
+  MessageOutlined,
 } from "@ant-design/icons";
 
 const { Sider } = Layout;
@@ -21,8 +22,8 @@ export default function MenuBar({
     { key: "home", icon: <HomeOutlined />, label: "Home" },
     { key: "feed", icon: <ReadOutlined />, label: "Feed" },
 
-    // 🌈 NEW — Theme Store
     { key: "themes", icon: <BgColorsOutlined />, label: "Themes" },
+    { key: "chat", icon: <MessageOutlined />, label: "AI Chat" },
 
     { key: "settings", icon: <SettingOutlined />, label: "Settings" },
     {
@@ -59,7 +60,7 @@ export default function MenuBar({
         theme="dark"
         mode="inline"
         selectedKeys={[selected]}
-        onClick={(e) => setSelected(e.key)} // 👈 handles navigation
+        onClick={(e) => setSelected(e.key)}
         items={items}
       />
     </Sider>
